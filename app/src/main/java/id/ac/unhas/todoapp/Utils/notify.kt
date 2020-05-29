@@ -13,7 +13,7 @@ import androidx.work.Worker
 import id.ac.unhas.todoapp.Activity.MainActivity
 import id.ac.unhas.todoapp.R
 
-class notify() : Worker() {
+class notify : Worker() {
 
     private val b = "420"
     var task = " "

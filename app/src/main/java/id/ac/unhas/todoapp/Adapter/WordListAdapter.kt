@@ -2,6 +2,7 @@ package id.ac.unhas.todoapp.Adapter
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,12 +55,20 @@ class WordListAdapter internal constructor(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = words[position]
         holder.wordItemView.text = current.word
+        if(current.isComplete){
+            holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.colorAccent))
+            holder.wordItemView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        }
+        else{
+            holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.textColor))
+            holder.wordItemView.paintFlags = holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
         holder.timeItemView.text = current.time
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
         holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
         holder.completionToggle.isChecked = current.isComplete
         holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
-            toggleCompletion(current.word, isChecked)
+            toggleCompletion(current.id, isChecked)
         }
     }
 
@@ -79,8 +88,8 @@ class WordListAdapter internal constructor(
     override fun getItemCount() = words.size
 
     fun getList() = words
-    private fun toggleCompletion(task: String, mark: Boolean) {
-        wordViewModel.markAsComplete(task, mark)
+    private fun toggleCompletion(id: Int, mark: Boolean) {
+        wordViewModel.markAsComplete(id, mark)
     }
 
     fun removeitem(position: Int) {

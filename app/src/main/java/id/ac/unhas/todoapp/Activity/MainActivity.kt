@@ -1,7 +1,7 @@
 package id.ac.unhas.todoapp.Activity
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
