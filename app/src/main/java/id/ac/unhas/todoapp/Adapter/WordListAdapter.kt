@@ -27,7 +27,6 @@ class WordListAdapter internal constructor(
     private var words = ArrayList<Word>() // Cached copy of words
     private lateinit var ctx: Context
     private lateinit var view: View
-    private val parentView: FloatingActionButton = v
     private lateinit var wordViewModel: WordViewModel
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,15 +45,15 @@ class WordListAdapter internal constructor(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = words[position]
         holder.wordItemView.text = current.word
-        if(current.isComplete){
+        if (current.isComplete) {
             holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.colorAccent))
+            holder.wordItemView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.textColor))
             holder.wordItemView.paintFlags =
                 holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
-        else{
-            holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.textColor))
-            holder.wordItemView.paintFlags = holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-        }
+
         holder.timeItemView.text = current.time
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
         holder.avImageView.avatarBackgroundColor = Color.parseColor(current.color)

@@ -3,6 +3,7 @@ package id.ac.unhas.todoapp.Utils
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.graphics.Color
@@ -10,10 +11,11 @@ import android.os.Looper
 import android.preference.PreferenceManager
 import androidx.core.app.NotificationCompat
 import androidx.work.Worker
+import androidx.work.WorkerParameters
 import id.ac.unhas.todoapp.Activity.MainActivity
 import id.ac.unhas.todoapp.R
 
-class notify : Worker() {
+class notify(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
 
     private val b = "420"
     var task = " "
@@ -50,7 +52,7 @@ class notify : Worker() {
             .build()
         notificationManager.notify(1112, notification)
         Looper.loop()
-        return Result.SUCCESS
+        return Result.success()
 
     }
 
