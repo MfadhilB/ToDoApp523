@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.unhas.todoapp.databinding.ActivityMainBinding
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.databinding.ActivityMainBinding
 import id.ac.unhas.todoapp.Data.Word
 import id.ac.unhas.todoapp.Data.WordViewModel
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerview)
-        val wordListAdapter = WordListAdapter(this)
+        val wordListAdapter = WordListAdapter(this, binding.fab)
         recyclerView.adapter = wordListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)

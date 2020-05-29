@@ -13,7 +13,7 @@ import androidx.work.WorkManager
 import androidx.work.Worker
 import com.example.robin.roomwordsample.R
 
-class notify: Worker() {
+class notify : Worker() {
 
     private val b = "420"
     var task = " "
@@ -40,7 +40,7 @@ class notify: Worker() {
             .setContentIntent(pi)
             .build()
         notificationManager.notify(1112, notification)
-        WorkManager.getInstance().cancelAllWork()
+
         Looper.loop()
         return Worker.Result.SUCCESS
 

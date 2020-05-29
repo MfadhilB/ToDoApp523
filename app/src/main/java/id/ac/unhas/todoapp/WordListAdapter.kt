@@ -8,23 +8,26 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.R
 import id.ac.unhas.todoapp.Data.Word
 import id.ac.unhas.todoapp.Data.WordViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.github.abdularis.civ.AvatarImageView
 import com.google.android.material.snackbar.Snackbar
 import kotlin.random.Random
 
 class WordListAdapter internal constructor(
-    context: Context
+    context: Context, v: FloatingActionButton
 ) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var words = emptyList<Word>() // Cached copy of words
     private lateinit var ctx: Context
     private lateinit var view: View
+    private val parentView: FloatingActionButton = v
     private lateinit var wordViewModel: WordViewModel
     private val colors: IntArray = intArrayOf( Color.rgb(220,85,31), Color.rgb(17,94,231), Color.rgb(9,187,69), Color.rgb(105,19, 191), Color.rgb(191, 27, 19))
 
@@ -48,7 +51,7 @@ class WordListAdapter internal constructor(
         holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0,5)]
         holder.relcard.setOnLongClickListener{
             wordViewModel.delete(current)
-            val snackbar = Snackbar.make(view, "Deleted Todo", Snackbar.LENGTH_SHORT)
+            val snackbar = Snackbar.make(parentView, "Deleted Todo", Snackbar.LENGTH_SHORT)
             snackbar.show()
             WorkManager.getInstance().cancelAllWorkByTag(current.tag)
             return@setOnLongClickListener true
