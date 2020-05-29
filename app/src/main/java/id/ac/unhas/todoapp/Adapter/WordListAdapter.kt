@@ -6,9 +6,12 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import id.ac.unhas.todoapp.Data.Word
@@ -28,16 +31,6 @@ class WordListAdapter internal constructor(
     private lateinit var view: View
     private val parentView: FloatingActionButton = v
     private lateinit var wordViewModel: WordViewModel
-    private val colors: IntArray = intArrayOf(
-        Color.rgb(244, 81, 30),
-        Color.rgb(17, 94, 231),
-        Color.rgb(9, 187, 69),
-        Color.rgb(123, 31, 162),
-        Color.rgb(191, 27, 19),
-        Color.rgb(0, 121, 107),
-        Color.rgb(255, 143, 0),
-        Color.rgb(216, 27, 96)
-    )
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.task)
@@ -57,7 +50,8 @@ class WordListAdapter internal constructor(
         holder.wordItemView.text = current.word
         if(current.isComplete){
             holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.colorAccent))
-            holder.wordItemView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            holder.wordItemView.paintFlags =
+                holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
         else{
             holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.textColor))
@@ -65,10 +59,34 @@ class WordListAdapter internal constructor(
         }
         holder.timeItemView.text = current.time
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
-        holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
+        holder.avImageView.avatarBackgroundColor = Color.parseColor(current.color)
         holder.completionToggle.isChecked = current.isComplete
         holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
             toggleCompletion(current.id, isChecked)
+        }
+        holder.relcard.setOnClickListener {
+            val mDialogView =
+                LayoutInflater.from(ctx).inflate(R.layout.task_description_dialog, null)
+            mDialogView.findViewById<TextView>(R.id.name).text = current.word
+            if (current.description.isNotEmpty()) {
+                mDialogView.findViewById<TextView>(R.id.description).text = current.description
+            } else {
+                mDialogView.findViewById<TextView>(R.id.description).visibility = View.GONE
+            }
+            mDialogView.findViewById<TextView>(R.id.time).text = current.time
+            mDialogView.findViewById<TextView>(R.id.status).text =
+                if (current.isComplete) ctx.getString(R.string.completed) else ctx.getString(R.string.not_completed)
+            mDialogView.findViewById<TextView>(R.id.status).setTextColor(
+                ContextCompat.getColor(
+                    ctx,
+                    if (current.isComplete) R.color.colorAccent else R.color.textColor
+                )
+            )
+            val mBuilder = AlertDialog.Builder(ctx).setView(mDialogView)
+            val mAlertDialog = mBuilder.show()
+            mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
+                mAlertDialog.dismiss()
+            }
         }
     }
 

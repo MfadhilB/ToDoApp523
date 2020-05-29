@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.work.impl.WorkDatabaseMigrations.MIGRATION_3_4
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = arrayOf(Word::class), version = 4)
+@Database(entities = arrayOf(Word::class), version = 5)
 public abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
@@ -26,10 +26,7 @@ public abstract class WordRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     WordRoomDatabase::class.java,
                     "Word_database"
-                ).addMigrations(MIGRATION_1_2)
-                    .addMigrations(MIGRATION_2_3)
-                    .addMigrations(MIGRATION_3_4)
-                    .build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
