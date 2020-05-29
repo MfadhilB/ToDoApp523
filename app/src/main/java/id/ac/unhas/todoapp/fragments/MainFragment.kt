@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.unhas.todoapp.Adapter.WordListAdapter
 import id.ac.unhas.todoapp.Data.WordViewModel
-import com.example.robin.roomwordsample.R
+import id.ac.unhas.todoapp.R
 import id.ac.unhas.todoapp.Utils.SwipeToDeleteCallback
 import id.ac.unhas.todoapp.databinding.FragmentMainBinding
 import com.google.android.material.snackbar.Snackbar

@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
-import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.databinding.ActivityMainBinding
+import id.ac.unhas.todoapp.R
+import id.ac.unhas.todoapp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
