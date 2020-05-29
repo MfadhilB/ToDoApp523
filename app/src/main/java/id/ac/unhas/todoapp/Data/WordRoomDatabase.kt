@@ -4,11 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.work.impl.WorkDatabaseMigrations.MIGRATION_3_4
 import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = arrayOf(Word::class), version = 5)
-public abstract class WordRoomDatabase : RoomDatabase() {
+abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
 

@@ -101,7 +101,7 @@ class NewToDoFragment : Fragment() {
             val myFormat = "dd MMM, yyyy"
             val sdf = SimpleDateFormat(myFormat, Locale.US)
             val mDatePicker = DatePickerDialog(
-                context,
+                this.context!!,
                 DatePickerDialog.OnDateSetListener { _, selectedyear, selectedmonth, selectedday ->
                     binding.EnterDate.setText(selectedday.toString() + "/" + (selectedmonth + 1) + "/" + selectedyear)
                     year = selectedyear
