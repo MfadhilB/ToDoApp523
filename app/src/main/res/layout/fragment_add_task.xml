@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bgColor"
+            android:fillViewport="true"
+            android:transitionName="shared_container"
+            tools:context=".AddTaskFragment">
+
+        <RelativeLayout
+                android:id="@+id/parentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="54dp">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:title=" " />
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInput1"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/task"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/task"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_task"
+                        android:drawablePadding="10dp"
+                        android:inputType="textCapSentences"
+                        android:textSize="18sp"
+                        android:transitionName="emailLoginTransition" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInput2"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textInput1"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/description"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:hintTextColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_description"
+                        android:drawablePadding="10dp"
+                        android:inputType="text"
+                        android:textSize="18sp"
+                        android:transitionName="emailLoginTransition" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                    android:id="@+id/remind_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textInput2"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:padding="24dp">
+
+                <ImageView
+                        android:id="@+id/imgal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_remind" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@string/remind_me"
+                        android:textColor="@color/textColor"
+                        android:textSize="18sp" />
+
+                <Switch
+                        android:id="@+id/HasRemind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/EnterDateTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/remind_layout"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:visibility="invisible">
+
+                <EditText
+                        android:id="@+id/EnterDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:hint="@string/date"
+                        android:inputType="date"
+                        android:textIsSelectable="false" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/at"
+                        android:textSize="20sp" />
+
+                <EditText
+                        android:id="@+id/EnterTime"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:hint="@string/time"
+                        android:inputType="date"
+                        android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/EnterDateTime"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/create_task"
+                    android:textColor="@color/colorPrimary"
+                    app:backgroundTint="@color/colorAccent"
+                    app:cornerRadius="12dp"
+                    app:elevation="0dp"
+                    app:iconTint="@color/colorPrimary"
+                    app:icon="@drawable/ic_create" />
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>
+
