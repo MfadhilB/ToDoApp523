@@ -6,7 +6,7 @@
         app:startDestination="@id/mainFragment">
     <fragment
             android:id="@+id/mainFragment"
-            android:name="com.example.robin.mytodo523.fragments.MainFragment"
+            android:name="id.ac.unhas.mytodo523.Fragment.MainFragment"
             android:label="Minimal ToDo"
             tools:layout="@layout/fragment_main">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
             android:id="@+id/newTaskFragment"
-            android:name="com.example.robin.mytodo523.NewTaskFragment"
+            android:name="id.ac.unhas.mytodo523.Fragment.NewTaskFragment"
             android:label="Create New Task"
             tools:layout="@layout/fragment_add_task" >
         <action

@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#FAFAFA</color>
-    <color name="colorAccent">#42A5F5</color>
-    <color name="buttonLabel">#d3d3d3</color>
+    <color name="colorAccent">#F0F3F6</color>
+    <color name="buttonLabel">#08CEFF</color>
     <color name="icons">#FFFFFF</color>
 
     <color name="textColor">#000000</color>
-    <color name="bgColor">#6187FA</color>
+    <color name="bgColor">#7D8FC3</color>
 </resources>

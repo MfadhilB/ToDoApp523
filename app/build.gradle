@@ -60,7 +60,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.github.abdularis:CircularImageView:v1.2'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation "androidx.preference:preference-ktx:1.1.0"
+    implementation "androidx.preference:preference-ktx:1.1.1"
     kapt 'com.android.databinding:compiler:3.1.4'
 
 }
