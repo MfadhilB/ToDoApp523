@@ -13,6 +13,8 @@
     <string name="task">Nama Kegiatan</string>
     <string name="description">Deskripsi Kerja</string>
     <string name="close">Tutup</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Temukan Kegiatan Sebelumnya</string>
     <string name="completed">Selesai &#10003;</string>
     <string name="not_completed">Belum dilaksanakan</string>
     <string name="edit">&#9998; Edit</string>

@@ -17,6 +17,8 @@ import id.ac.unhas.mytodo523.Data.TaskViewModel
 import id.ac.unhas.mytodo523.R
 import id.ac.unhas.mytodo523.Utils.utils
 import com.github.abdularis.civ.AvatarImageView
+import java.util.*
+import kotlin.collections.ArrayList
 
 class WordListAdapter internal constructor(
     context: Context?) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
@@ -142,4 +144,6 @@ class WordListAdapter internal constructor(
         notifyItemChanged(position)
         taskViewModel.insert(task)
     }
+
+
 }
